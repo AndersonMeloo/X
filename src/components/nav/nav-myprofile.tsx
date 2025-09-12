@@ -14,13 +14,13 @@ export const NavMyProfile = () => {
                         className="size-full"
                     </Link>
                 </div>
-            </div>
 
-            <div className="flex-1 overflow-hidden">
-                <Link href={`${user.slug}`} className="block truncate">
-                    {user.name}  
-                </Link>
-                <div className="truncate text-sm text-gray-400">@{user.slug}</div>
+                <div className="flex-1 overflow-hidden">
+                    <Link href={`${user.slug}`} className="block truncate">
+                        {user.name}
+                    </Link>
+                    <div className="truncate text-sm text-gray-400">@{user.slug}</div>
+                </div>
             </div>
         </>
     )
