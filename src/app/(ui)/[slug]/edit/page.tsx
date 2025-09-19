@@ -2,6 +2,7 @@ import { ProfileFeed } from "@/components/profile/profile-feed";
 import { Button } from "@/components/ui/button";
 import { GeneralHeader } from "@/components/ui/general-header";
 import { Input } from "@/components/ui/input";
+import { TextArea } from "@/components/ui/textarea";
 import { user } from "@/data/user";
 import { faCamera, faLink, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -51,6 +52,7 @@ export default function Page() {
             </section>
 
             <section className="p-6 flex flex-col gap-4">
+
                 <label>
                     <p className="text-lg text-gray-500 mb-2">Nome
                         <Input
@@ -59,6 +61,31 @@ export default function Page() {
                         />
                     </p>
                 </label>
+
+                <label>
+                    <p className="text-lg text-gray-500 mb-2">Bio
+                        <TextArea
+                            placehoder="Descreva sobre você"
+                            rows={4}
+                            value={user.bio}
+                        />
+                    </p>
+                </label>
+
+                <label>
+                    <p className="text-lg text-gray-500 mb-2">Link
+                        <Input
+                            placeholder="Digite um link"
+                            value={user.link}
+                        />
+                    </p>
+                </label>
+
+                <Button
+                    label="Salvar alterações"
+                    size={1}
+                />
+
             </section>
         </div>
     )
