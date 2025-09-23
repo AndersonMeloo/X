@@ -1,0 +1,13 @@
+npm init 
+
+npm i -D typescript tsx
+
+npx tsc --init
+
+npm i express cors helmet
+
+npm i -D @types/express @types/cors @types/node
+
+Prisma
+npm i -D prisma
+npx prisma init
