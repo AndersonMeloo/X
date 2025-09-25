@@ -14,6 +14,8 @@ mainRouter.post('/auth/signup', authController.signup)
 // Login
 // mainRouter.post('/auth/signin')
 
+
+// TOKEN NECESSARIO - JWT = JSON WEB TOKEN  
 // Create Tweet
 // mainRouter.post('./tweet')
 // Pegar um Tweet
