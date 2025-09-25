@@ -1,0 +1,22 @@
+npm init 
+
+npm i -D typescript tsx
+
+npx tsc --init
+
+npm i express cors helmet
+
+npm i -D @types/express @types/cors @types/node
+
+Prisma
+npm i -D prisma
+npx prisma init
+npm i @prisma/client
+
+# Historico de Alterações - npx prisma migrate dev 'Migrations'
+
+# Validação dos Dados do User
+npm i zod slug bcrypt-ts jsonwebtoken
+npm i -D @types/slug @types/jsonwebtoken
+
+JWT - JSON WEB TOKEN
