@@ -1,7 +1,9 @@
 import { RequestHandler } from "express";
 import { signupSchema } from "../schemas/signup";
-import { findUserByEmail, findUserBySlug } from "../services/user";
+import { createUser, findUserByEmail, findUserBySlug } from "../services/user";
 import slug from "slug";
+import { hash } from "bcrypt-ts";
+import { createJWT } from "../utils/jwt";
 
 export const signup: RequestHandler = async (req, res) => {
 
@@ -31,9 +33,30 @@ export const signup: RequestHandler = async (req, res) => {
     }
 
     // Gerar Hash de Senha
-    // Criar o Usuario
-    // Cria o Token de Acesso
-    // Retorna o Resultado (Token, User)
+    const hashPassoword = await hash(safeData.data.password, 10) // Salva no banco de Dados uma Senha 'HASH' Diferente da que o USUARIO criou BCRYPT
 
-    res.json({})
+    // Criar o Usuario
+    const newUser = await createUser({
+
+        slug: userSlug,
+        name: safeData.data.name,
+        email: safeData.data.email,
+        password: hashPassoword
+    })
+
+    // Cria o Token de Acesso
+    const token = createJWT(userSlug)
+
+    // Retorna o Resultado (Token, User)
+    res.status(201).json({
+
+        token,
+        user: {
+            name: newUser.name,
+            slug: newUser.slug,
+            avatar: newUser.avatar
+        }
+    })
+
+    // res.json({})
 }
