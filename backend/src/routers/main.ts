@@ -2,17 +2,20 @@ import { Router } from 'express'
 
 import * as pingController from '../controllers/ping'
 import * as authController from '../controllers/auth'
+import { verifyJWT } from '../utils/jwt'
 
 export const mainRouter = Router()
 
 // Testando Servidor
 mainRouter.get('/ping', pingController.ping)
-// mainRouter.get('/privatePing')
+
+// Só roda com Usario Logado
+mainRouter.get('/privateping', verifyJWT, pingController.privatePing)
 
 // Register
 mainRouter.post('/auth/signup', authController.signup)
 // Login
-// mainRouter.post('/auth/signin')
+mainRouter.post('/auth/signin', authController.signin)
 
 
 // TOKEN NECESSARIO - JWT = JSON WEB TOKEN  
