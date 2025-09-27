@@ -2,6 +2,7 @@ import { Router } from 'express'
 
 import * as pingController from '../controllers/ping'
 import * as authController from '../controllers/auth'
+import * as tweetController from '../controllers/tweet'
 import { verifyJWT } from '../utils/jwt'
 
 export const mainRouter = Router()
@@ -20,13 +21,16 @@ mainRouter.post('/auth/signin', authController.signin)
 
 // TOKEN NECESSARIO - JWT = JSON WEB TOKEN  
 // Create Tweet
-// mainRouter.post('./tweet')
+mainRouter.post('/tweet', verifyJWT, tweetController.addTweet)
+
 // Pegar um Tweet
-// mainRouter.get('/tweet/:id')
+mainRouter.get('/tweet/:id', verifyJWT, tweetController.getTweet)
+
 // Repostas do Tweet
-// mainRouter.get('/tweet/:id/answers')
+mainRouter.get('/tweet/:id/answers', verifyJWT, tweetController.getAnswers)
+
 // Likes Tweet
-// mainRouter.post('/tweet/:id/like')
+mainRouter.post('/tweet/:id/like', verifyJWT, tweetController.likeToggle)
 
 // Infos do Usuarios
 // mainRouter.get('/user/:slug')
