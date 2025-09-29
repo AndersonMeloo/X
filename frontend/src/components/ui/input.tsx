@@ -12,9 +12,10 @@ type Props = {
     value?: string,
     onChange?: (newValue: string) => void,
     onEnter?: () => void
+    required?: boolean
 }
 
-export const Input = ({ placeholder, password, filled, icon, value, onChange, onEnter }: Props) => {
+export const Input = ({ placeholder, password, filled, icon, value, onChange, onEnter, required }: Props) => {
 
     const [showPassword, setShowPassword] = useState(false)
 
@@ -38,6 +39,7 @@ export const Input = ({ placeholder, password, filled, icon, value, onChange, on
                 }
 
                 <input className="flex-1 outline-none bg-transparent h-full px-4"
+                    required={required}
                     type={password && !showPassword ? 'password' : 'text'}
                     placeholder={placeholder}
                     value={value}
