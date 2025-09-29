@@ -1,4 +1,4 @@
-import { sl } from "zod/v4/locales"
+import { sl, tr } from "zod/v4/locales"
 import { prisma } from "../utils/prisma"
 import { getPublicURL } from "../utils/url"
 
@@ -106,7 +106,110 @@ export const likeTweet = async (slug: string, id: number) => {
 
         data: {
             userSlug: slug,
-            tweeId: id  
+            tweeId: id
         }
     })
+}
+
+export const findTweetsByUser = async (slug: string, currentPage: number, perPage: number) => {
+
+    const tweets = await prisma.tweet.findMany({
+
+        include: {
+            likes: {
+                select: {
+                    userSlug: true
+                }
+            }
+        },
+
+        where: {
+            userSlug: slug,
+            answerOf: 0
+        },
+
+        orderBy: { createAt: 'desc' },
+        skip: currentPage * perPage,
+        take: perPage
+    })
+
+    return tweets
+}
+
+export const findTweetFeed = async (following: string[], currentPage: number, perPage: number) => {
+
+    const tweets = await prisma.tweet.findMany({
+
+        include: {
+            user: {
+                select: {
+                    name: true,
+                    avatar: true,
+                    slug: true
+                }
+            },
+
+            likes: {
+                select: {
+                    userSlug: true
+                }
+            }
+        },
+
+        where: {
+            userSlug: { in: following },
+            answerOf: 0
+        },
+
+        orderBy: { createAt: 'desc' },
+        skip: currentPage * perPage,
+        take: perPage
+    })
+
+    for (let tweetIndex in tweets) {
+
+        tweets[tweetIndex].user.avatar = getPublicURL(tweets[tweetIndex].user.avatar)
+    }
+
+    return tweets
+}
+
+export const findTweetsByBody = async (bodyContains: string, currentPage: number, perPage: number) => {
+
+    const tweets = await prisma.tweet.findMany({
+
+        include: {
+            user: {
+                select: {
+                    name: true,
+                    avatar: true,
+                    slug: true
+                }
+            },
+
+            likes: {
+                select: {
+                    userSlug: true
+                }
+            }
+        },
+
+        where: {
+            body: {
+                contains: bodyContains,
+                mode: 'insensitive'
+            }
+        },
+
+        orderBy: { createAt: 'desc' },
+        skip: currentPage * perPage,
+        take: perPage
+    })
+
+    for (let tweetIndex in tweets) {
+
+        tweets[tweetIndex].user.avatar = getPublicURL(tweets[tweetIndex].user.avatar)
+    }
+
+    return tweets
 }
