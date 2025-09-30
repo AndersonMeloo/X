@@ -58,7 +58,14 @@ export const SigninForm = () => {
                     onChange={val => setForm({ ...form, password: val })}
                     password
                     required
+
                 />
+
+                {error &&
+                    <div className="text-red-500 mt-2">
+                        <p>Senha ou E-mail incorretas</p>
+                    </div>
+                }
 
                 <Button
                     label="Entrar"
