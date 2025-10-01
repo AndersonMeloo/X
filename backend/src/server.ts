@@ -13,6 +13,6 @@ server.use(express.json())
 server.use(mainRouter)
 
 // Inicializa
-server.listen(process.env.POT || 3000, () => {
+server.listen(process.env.PORT || 3000, () => {
     console.log(`Servidor rodando em ${process.env.BASE_URL}`)
 })
