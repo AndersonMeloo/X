@@ -28,6 +28,7 @@ export const SigninForm = () => {
             })
 
             localStorage.setItem("token", data.token)
+            localStorage.setItem("slug", data.user.slug) // adiciona o slug do usuário
             window.location.href = '/home'
         } catch (err: any) {
             setError(err.message)
