@@ -7,7 +7,7 @@ import { faHeart } from "@fortawesome/free-regular-svg-icons"
 import { faRetweet, faHeart as faHeartFilled } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Link from "next/link"
-import { useState } from "react"
+import { useState } from "react"    
 
 type Props = {
     tweet: Tweet
