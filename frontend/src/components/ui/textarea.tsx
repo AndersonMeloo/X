@@ -1,19 +1,21 @@
 type Props = {
-    placehoder: string,
+    placeholder?: string,
     rows: number,
-    value?: string
+    value?: string,
+    onChange?: (val: string) => void
 }
 
-export const TextArea = ({ placehoder, rows, value }: Props) => {
+export const TextArea = ({ placeholder, rows, value, onChange }: Props) => {
 
     return (
 
         <div className="has-[:focus]:border-white flex items-center rounded-3xl border-2 border-gray-700">
             <textarea
                 className="flex-1 outline-none bg-transparent h-full p-5 resize-none"
-                placeholder={placehoder}
+                placeholder={placeholder}
                 value={value}
                 rows={rows}
+                onChange={e => onChange?.(e.target.value)}
             >
             </textarea>
         </div>
