@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { apiFetch } from "@/utils/api"
 import { AuthUserData } from "@/types/auth"
 
-export function     useAuthUser() {
+export function useAuthUser() {
 
     const [userData, setUserData] = useState<AuthUserData | null>(null)
     const [loading, setLoading] = useState(true)
