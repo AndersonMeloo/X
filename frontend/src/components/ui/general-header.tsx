@@ -12,7 +12,7 @@ export const GeneralHeader = ({ children, backHref }: Props) => {
     return (
 
         <header className="flex gap-4 items-center p-6">
-            <Link href={backHref} className="flex justify-center items-center border-2 border-gray-500 size-12 rounded-full">
+            <Link href={"/home"} className="flex justify-center items-center border-2 border-gray-500 size-12 rounded-full">
                 <FontAwesomeIcon icon={faArrowLeft} className=" size-6" />
             </Link>
 
