@@ -22,7 +22,15 @@ export async function apiFetch(
 
     const data = await res.json().catch(() => ({}))
 
-    if (!res.ok || data.error) throw new Error(data.error || 'Erro na Requisição')
+    // if (!res.ok || data.error) throw new Error(data.error || 'Erro na Requisição')
+    if (!res.ok || data.error) {
+
+        const errorMessage =
+            typeof data.error === 'string'
+                ? data.error
+                : JSON.stringify(data.error)
+        throw new Error(errorMessage || 'Erro na Requisição')
+    }
 
     return data
 }
