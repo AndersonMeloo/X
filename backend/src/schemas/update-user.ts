@@ -4,5 +4,9 @@ export const updateUserSchema = z.object({
 
     name: z.string().min(2, 'Precisa ter 2 ou mais caracteres').optional(),
     bio: z.string().optional(),
-    link: z.string().url('Precisa ser uma URL válida').optional()
+    link: z
+        .string()
+        .url('Precisa ser uma URL válida')
+        .optional()
+        .or(z.literal('')) // Permite que o Campo seja Vazio
 })
