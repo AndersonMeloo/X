@@ -63,9 +63,11 @@ npx prisma migrate dev
 
 Rodar o servidor:
 npm run dev
+```
 
 💻 Configuração do Front-end
 
+```bash
 # Entrar na pasta do frontend
 cd frontend
 
@@ -74,6 +76,7 @@ npm install
 
 # Rodar o projeto
 npm run dev
+```
 
 🔐 Fluxo de Autenticação
 
