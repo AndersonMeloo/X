@@ -65,7 +65,7 @@ Rodar o servidor:
 npm run dev
 ```
 
-💻 Configuração do Front-end
+## 💻 Configuração do Front-end
 
 ```bash
 # Entrar na pasta do frontend
@@ -78,26 +78,18 @@ npm install
 npm run dev
 ```
 
-🔐 Fluxo de Autenticação
+## 🔐 Fluxo de Autenticação
 
-Cadastro: usuário insere nome, email e senha → dados validados com Zod
+- Cadastro: usuário insere nome, email e senha → dados validados com Zod
+- Login: validação com JWT, retornando token de sessão
+- Acesso autenticado: rotas protegidas verificam o token via middleware
+- Perfil e posts: backend retorna informações do usuário logado e seus posts
 
-Login: validação com JWT, retornando token de sessão
+## 🧠 Conceitos Aplicados
 
-Acesso autenticado: rotas protegidas verificam o token via middleware
-
-Perfil e posts: backend retorna informações do usuário logado e seus posts
-
-🧠 Conceitos Aplicados
-
-Integração completa entre Next.js e Node/Express
-
-Autenticação via JWT
-
-ORM Prisma com PostgreSQL
-
-Validação robusta com Zod
-
-Estilização com Tailwind CSS
-
-Organização modular com TypeScript
+- Integração completa entre Next.js e Node/Express
+- Autenticação via JWT
+- ORM Prisma com PostgreSQL
+- Validação robusta com Zod
+- Estilização com Tailwind CSS
+- Organização modular com TypeScript
